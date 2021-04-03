@@ -8,7 +8,7 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
+    
     
     let defaults = UserDefaults.standard
     
@@ -18,56 +18,70 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var rememberMe: UISwitch!
     
-    var userDetails = ["thanos@gmail.com": "5555", "wonderwoman@yahoo.com": "abcd"]
-   
+    var userDetails = ["thanos@gmail.com": "5555", "wonderwoman@yahoo.com": "abcd","1":"1"]
+    
     
     override func viewDidLoad() {
-        let Remail = defaults.string(forKey: "rememberEmail")
-        let Rpass = defaults.string(forKey: "rememberPassword")
-        userNameLabel.text = Remail
-        passwordLabel.text = Rpass
-        rememberMe.isOn = false
         super.viewDidLoad()
+        self.title = "TOURISM APP"
     }
     
     
-    @IBAction func loginButtonPressed(_ sender: Any) {
+    @IBAction func btnClick(_ sender: UIButton) {
         let username = userNameLabel.text!
         let password = passwordLabel.text!
         
-        for userName in userDetails.keys
+        let userNameKeys = userDetails.keys
+        if userNameKeys.contains(username)
         {
-            if(userName == username)
+            let pswd = userDetails[username]
+            if pswd == password
             {
-                if(userDetails[userName] == password)
-                {
-                    print("Welcome to tourism app")
-                    if(rememberMe.isOn){
-                        defaults.set(userNameLabel.text, forKey: "rememberEmail")
-                        defaults.set(passwordLabel.text, forKey: "rememberPassword")
-                    }
-                    defaults.set(userNameLabel.text, forKey: "email")
-//                    guard let s2 = storyboard?.instantiateViewController(identifier: "places") as? AttractionViewController else {
-//                              return
-//                          }
-//                    show(s2, sender: self)
-                    break;
+                if(rememberMe.isOn){
+                    defaults.set(userNameLabel.text, forKey: "rememberEmail")
+                    defaults.set(passwordLabel.text, forKey: "rememberPassword")
+                    defaults.setValue(rememberMe.isOn, forKey: "rememberMeState")
                 }
                 else
                 {
-                    let alertfill = UIAlertController(title: "Please enter valid credentials", message: "", preferredStyle: .alert)
-                    self.present(alertfill, animated:true, completion: nil)
-                    let fillBtn = UIAlertAction(title: "Ok", style: .destructive, handler: nil)
-                    alertfill.addAction(fillBtn)
+                    
+                    defaults.set("", forKey: "rememberEmail")
+                    defaults.set("", forKey: "rememberPassword")
+                    defaults.setValue(false, forKey: "rememberMeState")
+                    
                 }
-                
+                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "places") as? AttractionViewController
+                self.navigationController?.pushViewController(vc!, animated: true)
             }
-            else{
-                let alertfill = UIAlertController(title: "Please enter valid uname", message: "", preferredStyle: .alert)
+            else
+            {
+                let alertfill = UIAlertController(title: "Please enter valid credentials", message: "", preferredStyle: .alert)
                 self.present(alertfill, animated:true, completion: nil)
                 let fillBtn = UIAlertAction(title: "Ok", style: .destructive, handler: nil)
                 alertfill.addAction(fillBtn)
             }
+        }
+        else
+        {
+            let alertfill = UIAlertController(title: "Please enter valid uname", message: "", preferredStyle: .alert)
+            self.present(alertfill, animated:true, completion: nil)
+            let fillBtn = UIAlertAction(title: "Ok", style: .destructive, handler: nil)
+            alertfill.addAction(fillBtn)
+        }
+        
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+
+        userNameLabel.text = ""
+        passwordLabel.text = ""
+        rememberMe.isOn = false
+        
+        if defaults.bool(forKey: "rememberMeState")
+        {
+            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "places") as? AttractionViewController
+            self.navigationController?.pushViewController(vc!, animated: true)
         }
         
     }

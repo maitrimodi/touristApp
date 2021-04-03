@@ -8,11 +8,26 @@
 import UIKit
 
 class AttractionViewController: UIViewController {
+    
+    let defaults = UserDefaults.standard
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "List of Attraction"
-        // Do any additional setup after loading the view.
+        self.title = "ATTRACTIONS"
+        let logButton : UIBarButtonItem = UIBarButtonItem(title: "Logout", style: UIBarButtonItem.Style.plain, target: self, action: #selector(gotSettingPage))
+        
+        self.navigationItem.rightBarButtonItem = logButton
     }
-
+    
+    
+    @objc func gotSettingPage(){
+        self.navigationController?.popViewController(animated: true)
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        defaults.setValue(false, forKey: "rememberMeState")
+    }
 }
+
