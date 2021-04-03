@@ -121,6 +121,7 @@
                                 <state key="normal" title="Login"/>
                                 <connections>
                                     <action selector="loginButtonPressed:" destination="QIY-kV-u0M" eventType="touchUpInside" id="HFq-vo-pk5"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="Lmy-sg-UBF"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="lHg-Qg-48L">

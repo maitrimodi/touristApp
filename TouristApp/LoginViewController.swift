@@ -47,10 +47,10 @@ class LoginViewController: UIViewController {
                         defaults.set(passwordLabel.text, forKey: "rememberPassword")
                     }
                     defaults.set(userNameLabel.text, forKey: "email")
-                    guard let s2 = storyboard?.instantiateViewController(identifier: "places") as? AttractionViewController else {
-                              return
-                          }
-                    show(s2, sender: self)
+//                    guard let s2 = storyboard?.instantiateViewController(identifier: "places") as? AttractionViewController else {
+//                              return
+//                          }
+//                    show(s2, sender: self)
                     break;
                 }
                 else
