@@ -11,7 +11,7 @@ class AttractionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        title = "List of Attraction"
         // Do any additional setup after loading the view.
     }
 

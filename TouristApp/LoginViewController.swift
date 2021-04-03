@@ -50,6 +50,7 @@ class LoginViewController: UIViewController {
                     guard let s2 = storyboard?.instantiateViewController(identifier: "places") as? AttractionViewController else {
                               return
                           }
+                    show(s2, sender: self)
                     break;
                 }
                 else
