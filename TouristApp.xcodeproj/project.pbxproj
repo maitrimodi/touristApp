@@ -13,6 +13,8 @@
 		D571AD9B261737AD0040503C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D571AD99261737AD0040503C /* Main.storyboard */; };
 		D571AD9D261737BD0040503C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D571AD9C261737BD0040503C /* Assets.xcassets */; };
 		D571ADA0261737BD0040503C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D571AD9E261737BD0040503C /* LaunchScreen.storyboard */; };
+		D571ADAD26173C9F0040503C /* AttractionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D571ADAC26173C9F0040503C /* AttractionTableViewCell.swift */; };
+		D571ADB2261740340040503C /* touristAttraction.json in Resources */ = {isa = PBXBuildFile; fileRef = D571ADB1261740340040503C /* touristAttraction.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		D571AD9C261737BD0040503C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D571AD9F261737BD0040503C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D571ADA1261737BD0040503C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D571ADAC26173C9F0040503C /* AttractionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractionTableViewCell.swift; sourceTree = "<group>"; };
+		D571ADB1261740340040503C /* touristAttraction.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = touristAttraction.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,10 +63,12 @@
 				D571AD93261737AD0040503C /* AppDelegate.swift */,
 				D571AD95261737AD0040503C /* SceneDelegate.swift */,
 				D571AD97261737AD0040503C /* ViewController.swift */,
+				D571ADAC26173C9F0040503C /* AttractionTableViewCell.swift */,
 				D571AD99261737AD0040503C /* Main.storyboard */,
 				D571AD9C261737BD0040503C /* Assets.xcassets */,
 				D571AD9E261737BD0040503C /* LaunchScreen.storyboard */,
 				D571ADA1261737BD0040503C /* Info.plist */,
+				D571ADB1261740340040503C /* touristAttraction.json */,
 			);
 			path = TouristApp;
 			sourceTree = "<group>";
@@ -125,6 +131,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D571ADA0261737BD0040503C /* LaunchScreen.storyboard in Resources */,
+				D571ADB2261740340040503C /* touristAttraction.json in Resources */,
 				D571AD9D261737BD0040503C /* Assets.xcassets in Resources */,
 				D571AD9B261737AD0040503C /* Main.storyboard in Resources */,
 			);
@@ -137,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D571ADAD26173C9F0040503C /* AttractionTableViewCell.swift in Sources */,
 				D571AD98261737AD0040503C /* ViewController.swift in Sources */,
 				D571AD94261737AD0040503C /* AppDelegate.swift in Sources */,
 				D571AD96261737AD0040503C /* SceneDelegate.swift in Sources */,

@@ -1,0 +1,29 @@
+[
+    {
+        "name" : "Gateway of India ",
+        "address" : "Apollo Bandar, Colaba, Mumbai, Maharashtra 400001",
+        "photos" : ["gateway_of_india_01", "gateway_of_india_02", "gateway_of_india_03", "gateway_of_india_04"],
+        "phone_no": +91 9227244449,
+        "website" : "https://mumbaicity.gov.in/tourist-place/gateway-of-india/",
+        "description" : "The Gateway of India is an arch monument built during the 20th century in Bombay, India. The monument was erected to commemorate the landing of King George V and Queen Mary at Apollo Bunder on their visit to India in 1911.",
+        "pricing" : 15
+    },
+    {
+        "name" : "Elephanta Caves",
+        "address" : "Gharapuri, Maharashtra 400094",
+        "photos" : ["elephanta_caves_01", "elephanta_caves_02", "elephanta_caves_03", "elephanta_caves_04"],
+        "phone_no" : +91 02222044040,
+        "website" : "https://www.maharashtratourism.gov.in/treasures/cave/elephanta-cave",
+        "description" : "Elephanta Caves are a UNESCO World Heritage Site and a collection of cave temples predominantly dedicated to the Hindu god Shiva. They are on Elephanta Island, or Gharapuri, in Mumbai Harbour, 10 kilometres east of Mumbai in the Indian state of Mahārāshtra.",
+        "pricing" : 30
+    },
+    {
+        "name" : "Haji Ali Dargah",
+        "address" : "Dargah Rd, Haji Ali, Mumbai, Maharashtra 400026",
+        "photos" : ["haji_ali_dargah_01","haji_ali_dargah_02", "haji_ali_dargah_03", "haji_ali_dargah_04" ],
+        "phone_no" : +91 9824044435,
+        "website" : "http://www.hajialidargah.in/",
+        "description" : "Haji Ali Dargah is one of the most popular religious places in Mumbai, visited by people of all religions alike. Haji Ali Dargah is one of India’s most famous and prestigious landmarks situated about 500 yards from the Mumbai shoreline in the middle of the Arabian Sea off Lala Lajpatrai Marg.",
+        "pricing": 20
+    }
+]
