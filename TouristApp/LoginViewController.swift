@@ -24,6 +24,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "TOURISM APP"
+//        userNameLabel.text = "thanos@gmail.com"
+//        passwordLabel.text = "5555"
     }
     
     

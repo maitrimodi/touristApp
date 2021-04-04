@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		6D86F9DB261889750077479C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D86F9DA261889750077479C /* LoginViewController.swift */; };
 		6D86F9DE26188DDF0077479C /* AttractionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D86F9DD26188DDF0077479C /* AttractionViewController.swift */; };
+		D56161082619FA9500E6FD31 /* AttractionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56161072619FA9500E6FD31 /* AttractionList.swift */; };
+		D561610B261A263400E6FD31 /* AttractionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D561610A261A263400E6FD31 /* AttractionDetailsViewController.swift */; };
+		D561610F261A39C800E6FD31 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D561610E261A39C800E6FD31 /* WebViewController.swift */; };
 		D571AD94261737AD0040503C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D571AD93261737AD0040503C /* AppDelegate.swift */; };
 		D571AD96261737AD0040503C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D571AD95261737AD0040503C /* SceneDelegate.swift */; };
 		D571AD9B261737AD0040503C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D571AD99261737AD0040503C /* Main.storyboard */; };
@@ -21,6 +24,9 @@
 /* Begin PBXFileReference section */
 		6D86F9DA261889750077479C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6D86F9DD26188DDF0077479C /* AttractionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractionViewController.swift; sourceTree = "<group>"; };
+		D56161072619FA9500E6FD31 /* AttractionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractionList.swift; sourceTree = "<group>"; };
+		D561610A261A263400E6FD31 /* AttractionDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractionDetailsViewController.swift; sourceTree = "<group>"; };
+		D561610E261A39C800E6FD31 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		D571AD90261737AD0040503C /* TouristApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouristApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D571AD93261737AD0040503C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D571AD95261737AD0040503C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +78,9 @@
 				D571ADB1261740340040503C /* touristAttraction.json */,
 				6D86F9DA261889750077479C /* LoginViewController.swift */,
 				6D86F9DD26188DDF0077479C /* AttractionViewController.swift */,
+				D56161072619FA9500E6FD31 /* AttractionList.swift */,
+				D561610A261A263400E6FD31 /* AttractionDetailsViewController.swift */,
+				D561610E261A39C800E6FD31 /* WebViewController.swift */,
 			);
 			path = TouristApp;
 			sourceTree = "<group>";
@@ -147,11 +156,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D56161082619FA9500E6FD31 /* AttractionList.swift in Sources */,
 				D571ADAD26173C9F0040503C /* AttractionTableViewCell.swift in Sources */,
 				D571AD94261737AD0040503C /* AppDelegate.swift in Sources */,
 				6D86F9DB261889750077479C /* LoginViewController.swift in Sources */,
+				D561610B261A263400E6FD31 /* AttractionDetailsViewController.swift in Sources */,
 				D571AD96261737AD0040503C /* SceneDelegate.swift in Sources */,
 				6D86F9DE26188DDF0077479C /* AttractionViewController.swift in Sources */,
+				D561610F261A39C800E6FD31 /* WebViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +311,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PV2F6VMTFW;
 				INFOPLIST_FILE = TouristApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -317,6 +330,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PV2F6VMTFW;
 				INFOPLIST_FILE = TouristApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
