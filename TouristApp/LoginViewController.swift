@@ -24,8 +24,6 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "TOURISM APP"
-//        userNameLabel.text = "thanos@gmail.com"
-//        passwordLabel.text = "5555"
     }
     
     
@@ -46,12 +44,11 @@ class LoginViewController: UIViewController {
                 }
                 else
                 {
-                    
                     defaults.set("", forKey: "rememberEmail")
                     defaults.set("", forKey: "rememberPassword")
                     defaults.setValue(false, forKey: "rememberMeState")
-                    
                 }
+                defaults.set(userNameLabel.text, forKey: "userName")
                 let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "places") as? AttractionViewController
                 self.navigationController?.pushViewController(vc!, animated: true)
             }
@@ -75,7 +72,7 @@ class LoginViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-
+        
         userNameLabel.text = ""
         passwordLabel.text = ""
         rememberMe.isOn = false
@@ -85,7 +82,6 @@ class LoginViewController: UIViewController {
             let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "places") as? AttractionViewController
             self.navigationController?.pushViewController(vc!, animated: true)
         }
-        
     }
     
 }

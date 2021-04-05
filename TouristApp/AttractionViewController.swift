@@ -8,6 +8,7 @@
 import UIKit
 
 class AttractionViewController: UIViewController,  UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return records.count
     }
@@ -80,9 +81,21 @@ class AttractionViewController: UIViewController,  UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "ATTRACTIONS"
+        
+        UINavigationBar.appearance().barTintColor = .black
+        UINavigationBar.appearance().tintColor = .white
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        UINavigationBar.appearance().isTranslucent = false
+        
+        
         let logButton : UIBarButtonItem = UIBarButtonItem(title: "Logout", style: UIBarButtonItem.Style.plain, target: self, action: #selector(gotSettingPage))
         
+        let backButton : UIBarButtonItem = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(goBackToLoginPage))
+        
         self.navigationItem.rightBarButtonItem = logButton
+        
+        self.navigationItem.leftBarButtonItem = backButton
+        
         
         //attach the data source and delegate to the outlet
         attractionListTableView.dataSource = self
@@ -128,12 +141,17 @@ class AttractionViewController: UIViewController,  UITableViewDelegate, UITableV
     
     
     @objc func gotSettingPage(){
+        defaults.setValue(false, forKey: "rememberMeState")
         self.navigationController?.popViewController(animated: true)
         
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    @objc func goBackToLoginPage()
+    {
         defaults.setValue(false, forKey: "rememberMeState")
+        self.navigationController?.popViewController(animated: true)
     }
+
+    
 }
 

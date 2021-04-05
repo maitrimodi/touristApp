@@ -1,5 +1,6 @@
 [
     {
+        "id": 1,
         "name" : "Gateway of India ",
         "address" : "Apollo Bandar, Colaba, Mumbai, Maharashtra 400001",
         "photos" : ["gateway_of_india_01", "gateway_of_india_02", "gateway_of_india_03", "gateway_of_india_04"],
@@ -9,6 +10,7 @@
         "pricing" : 15
     },
     {
+        "id": 2,
         "name" : "Elephanta Caves",
         "address" : "Gharapuri, Maharashtra 400094",
         "photos" : ["elephanta_caves_01", "elephanta_caves_02", "elephanta_caves_03", "elephanta_caves_04"],
@@ -18,6 +20,7 @@
         "pricing" : 30
     },
     {
+        "id": 3,
         "name" : "Haji Ali Dargah",
         "address" : "Dargah Rd, Haji Ali, Mumbai, Maharashtra 400026",
         "photos" : ["haji_ali_dargah_01","haji_ali_dargah_02", "haji_ali_dargah_03", "haji_ali_dargah_04" ],

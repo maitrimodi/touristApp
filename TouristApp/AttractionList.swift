@@ -8,6 +8,7 @@
 import Foundation
 
 struct AttractionList:Codable {
+    let id: Int
     let name: String
     let address: String
     let photos: [String]

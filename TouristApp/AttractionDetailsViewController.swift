@@ -6,16 +6,42 @@
 //
 
 import UIKit
+
 //import WebKit
 class AttractionDetailsViewController: UIViewController{
-//    override func loadView() {
-//                webView = WKWebView()
-//                webView.navigationDelegate = self
-//                view = webView
-//            }
+    //    override func loadView() {
+    //                webView = WKWebView()
+    //                webView.navigationDelegate = self
+    //                view = webView
+    //            }
+    let defaults = UserDefaults.standard
+    var attraction: AttractionList!
+    
+    // MARK: - Outlet
+    //    var webView: WKWebView!
+    @IBOutlet weak var rateSlider: UISlider?
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var image2Outlet: UIImageView!
+    @IBOutlet weak var image3Outlet: UIImageView!
+    @IBOutlet weak var image4Outlet: UIImageView!
+    @IBOutlet weak var sliderValueLabel: UILabel!
+    @IBOutlet weak var phoneNoLabel: UIButton!
+    @IBOutlet weak var websiteLabel: UIButton!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var pricingLabel: UILabel!
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        title = attraction.name
+        let logButton : UIBarButtonItem = UIBarButtonItem(title: "Logout", style: UIBarButtonItem.Style.plain, target: self, action: #selector(gotSettingPage))
+        
+        self.navigationItem.rightBarButtonItem = logButton
+        
+        let backButton : UIBarButtonItem = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(goBackToAttractionList))
+        
+        self.navigationItem.leftBarButtonItem = backButton
         nameLabel.text = attraction.name
         addressLabel.text = attraction.address
         image2Outlet.image = UIImage(named: attraction.photos[1])
@@ -25,59 +51,72 @@ class AttractionDetailsViewController: UIViewController{
         phoneNoLabel.setTitle(attraction.phoneNo, for: .normal)
         pricingLabel.text = "$ \(attraction.pricing)"
         descriptionLabel.text = attraction.description
-        
-    
-        
-        // Do any additional setup after loading the view.
-    }
-    // MARK: - Outlet
-//    var webView: WKWebView!
-    var attraction: AttractionList!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var image2Outlet: UIImageView!
-    @IBOutlet weak var image3Outlet: UIImageView!
-    @IBOutlet weak var image4Outlet: UIImageView!
-    
-    
-   
-    
-    @IBOutlet weak var phoneNoLabel: UIButton!
-    @IBOutlet weak var websiteLabel: UIButton!
-        
-        @IBAction func websiteButtonPressed(_ sender: Any) {
-//            let url = URL(string: attraction.website)!
-//            webView.load(URLRequest(url: url))
-//            webView.allowsBackForwardNavigationGestures = true
-            guard let pass = storyboard?.instantiateViewController(identifier: "webViewController") as? WebViewController else {
-                                    print("Cannot find the pass view controller")
-                                    return
-                                }
-            pass.website = attraction.website
-                                show(pass, sender: self)
+        let username = defaults.string(forKey: "userName")!
+        let previousData = defaults.dictionary(forKey: "\(username)_rating")
+
+        if(previousData != nil){
+        if let entry = previousData!.keys.first(where: { $0.lowercased().contains("\(attraction.id)") }) {
+            rateSlider?.setValue((previousData!["\(entry)"]! as! Float), animated: true)
+            sliderValueLabel.text = "\(previousData!["\(entry)"]!)"
         }
-        
-        @IBOutlet weak var descriptionLabel: UILabel!
-        @IBOutlet weak var pricingLabel: UILabel!
-        
+        }
+    }
+    
+    
+    @IBAction func sliderValueChanged(_ sender: UISlider) {
+        sliderValueLabel.text = "\(Int(sender.value))"
+        let username = defaults.string(forKey: "userName")!
+        var previousData = defaults.dictionary(forKey: "\(username)_rating")
+        if(previousData != nil){
+            if let entry = previousData!.keys.first(where: { $0.lowercased().contains("\(attraction.id)") }) {
+                //rewrite existing data
+                previousData!["\(entry)"] = Int(sender.value)
+                defaults.set(previousData, forKey: "\(username)_rating")
+            }else{
+                previousData!["\(attraction.id)"] = Int(sender.value)
+                defaults.set(previousData!, forKey: "\(username)_rating")
+            }
+        }else{
+             //entering new or appending first time
+            previousData = ["\(attraction.id)": Int(sender.value)]
+            print(previousData!)
+            defaults.set(previousData!, forKey: "\(username)_rating")
+        }
+
+    }
+    
+    @IBAction func websiteButtonPressed(_ sender: Any) {
+        //            let url = URL(string: attraction.website)!
+        //            webView.load(URLRequest(url: url))
+        //            webView.allowsBackForwardNavigationGestures = true
+        guard let pass = storyboard?.instantiateViewController(identifier: "webViewController") as? WebViewController else {
+            print("Cannot find the pass view controller")
+            return
+        }
+        pass.website = attraction.website
+        show(pass, sender: self)
+    }
+    
+  
+    
     @IBAction func phoneButtonPressed(_ sender: Any) {
         if let url = URL(string: "tel://\(attraction.phoneNo)"),
-        UIApplication.shared.canOpenURL(url) {
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+           UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
             print("Phone no pressed")
+        }
     }
     
     
-    /*
-     
-     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func gotSettingPage(){
+        defaults.setValue(false, forKey: "rememberMeState")
+        self.navigationController?.popToRootViewController(animated: true)
+        
     }
-    */
-
+    
+    @objc func goBackToAttractionList()
+    {
+        defaults.setValue(false, forKey: "rememberMeState")
+        self.navigationController?.popViewController(animated: true)
     }
 }
