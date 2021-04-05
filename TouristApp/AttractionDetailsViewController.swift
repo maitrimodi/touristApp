@@ -9,16 +9,10 @@ import UIKit
 
 //import WebKit
 class AttractionDetailsViewController: UIViewController{
-    //    override func loadView() {
-    //                webView = WKWebView()
-    //                webView.navigationDelegate = self
-    //                view = webView
-    //            }
     let defaults = UserDefaults.standard
     var attraction: AttractionList!
     
     // MARK: - Outlet
-    //    var webView: WKWebView!
     @IBOutlet weak var rateSlider: UISlider?
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
@@ -86,9 +80,6 @@ class AttractionDetailsViewController: UIViewController{
     }
     
     @IBAction func websiteButtonPressed(_ sender: Any) {
-        //            let url = URL(string: attraction.website)!
-        //            webView.load(URLRequest(url: url))
-        //            webView.allowsBackForwardNavigationGestures = true
         guard let pass = storyboard?.instantiateViewController(identifier: "webViewController") as? WebViewController else {
             print("Cannot find the pass view controller")
             return

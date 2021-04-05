@@ -28,5 +28,25 @@
         "website" : "http://www.hajialidargah.in/",
         "description" : "Haji Ali Dargah is one of the most popular religious places in Mumbai, visited by people of all religions alike. Haji Ali Dargah is one of India’s most famous and prestigious landmarks situated about 500 yards from the Mumbai shoreline in the middle of the Arabian Sea off Lala Lajpatrai Marg.",
         "pricing": 20
+    },
+    {
+        "id": 4,
+        "name" : "Juhu Beach, Mumbai",
+        "address" : "Juhu Tara Road, Mumbai",
+        "photos" : ["juhubeach_01","juhubeach_02","juhubeach_03","juhubeach_04" ],
+        "phoneNo" : "2222044040",
+        "website" : "N/A",
+        "description" : "Juhu is popular for lively Juhu Chowpatty Beach, a long stretch where casual cricket matches are played, and beach vendors offer snacks like bhel puri and ice cream. Nearby, chic bars serve everything from local beer to cocktails, while the white marble ISKCON temple serves up vegetarian fare and baked goods. Contemporary and experimental plays take the stage at Prithvi Theatre",
+        "pricing": 0
+    },
+    {
+        "id": 5,
+        "name" : "Marine Drive, Mumbai",
+        "address" : "Netaji Subhash Chandra Bose Road, Chowpatty, Mumbai",
+        "photos" : ["marinedrive_01","marinedrive_02","marinedrive_03","marinedrive_04"],
+        "phoneNo" : "N/A",
+        "website" : "https://en.wikipedia.org/wiki/Marine_Drive,_Mumbai",
+        "description" : "Marine Drive is a 3.6-kilometre-long Promenade along the Netaji Subhash Chandra Bose Road in South Mumbai in the city of Mumbai, India. Often, the names Marine Drive and Netaji Subhash Chandra Bose Road are used interchangeably to refer to this 3.9km stretch",
+        "pricing": 0
     }
 ]
