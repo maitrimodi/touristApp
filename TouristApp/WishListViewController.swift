@@ -74,8 +74,8 @@ class WishlistViewController: UIViewController, UITableViewDelegate, UITableView
                 let contents = try String(contentsOfFile: filepath)
                 let jsonData = contents.data(using: .utf8)!
                 objData = try! JSONDecoder().decode([AttractionList].self, from:jsonData)
-                let email = defaults.string(forKey: "userName")!
-                let getData = defaults.array(forKey: "\(email)_wishids") as? [Int]
+                let username = defaults.string(forKey: "userName")!
+                let getData = defaults.array(forKey: "\(username)_wishids") as? [Int]
                 if(getData?.count == nil){
                     print("No Wishlist")
                 }else{
