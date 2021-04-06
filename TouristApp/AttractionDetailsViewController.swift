@@ -24,18 +24,18 @@ class AttractionDetailsViewController: UIViewController{
     @IBOutlet weak var websiteLabel: UIButton!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var pricingLabel: UILabel!
-
+    @IBOutlet weak var wishBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = attraction.name
-        let logButton : UIBarButtonItem = UIBarButtonItem(title: "Logout", style: UIBarButtonItem.Style.plain, target: self, action: #selector(gotSettingPage))
         
+        let logButton : UIBarButtonItem = UIBarButtonItem(title: "Logout", style: UIBarButtonItem.Style.plain, target: self, action: #selector(gotSettingPage))
         self.navigationItem.rightBarButtonItem = logButton
         
         let backButton : UIBarButtonItem = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(goBackToAttractionList))
-        
         self.navigationItem.leftBarButtonItem = backButton
+        
         nameLabel.text = attraction.name
         addressLabel.text = attraction.address
         image2Outlet.image = UIImage(named: attraction.photos[1])
@@ -47,12 +47,24 @@ class AttractionDetailsViewController: UIViewController{
         descriptionLabel.text = attraction.description
         let username = defaults.string(forKey: "userName")!
         let previousData = defaults.dictionary(forKey: "\(username)_rating")
-
-        if(previousData != nil){
-        if let entry = previousData!.keys.first(where: { $0.lowercased().contains("\(attraction.id)") }) {
-            rateSlider?.setValue((previousData!["\(entry)"]! as! Float), animated: true)
-            sliderValueLabel.text = "\(previousData!["\(entry)"]!)"
+        let getWishListData = defaults.array(forKey: "\(username)_wishids") as? [Int]
+        if(getWishListData == nil){
+            wishBtn.setImage(UIImage(named: "wishlist-empty"), for: .normal)
+        }else{
+            for favlist in getWishListData!{
+                print("\(favlist) == \(attraction.id)")
+                if(favlist == attraction.id){    //if selected is wishlist
+                    wishBtn.setImage(UIImage(named: "wishlist"), for: .normal)
+                }
+                
+            }
         }
+        
+        if(previousData != nil){
+            if let entry = previousData!.keys.first(where: { $0.lowercased().contains("\(attraction.id)") }) {
+                rateSlider?.setValue((previousData!["\(entry)"]! as! Float), animated: true)
+                sliderValueLabel.text = "\(previousData!["\(entry)"]!)"
+            }
         }
     }
     
@@ -71,12 +83,11 @@ class AttractionDetailsViewController: UIViewController{
                 defaults.set(previousData!, forKey: "\(username)_rating")
             }
         }else{
-             //entering new or appending first time
+            //entering new or appending first time
             previousData = ["\(attraction.id)": Int(sender.value)]
-            print(previousData!)
             defaults.set(previousData!, forKey: "\(username)_rating")
         }
-
+        
     }
     
     @IBAction func websiteButtonPressed(_ sender: Any) {
@@ -88,7 +99,7 @@ class AttractionDetailsViewController: UIViewController{
         show(pass, sender: self)
     }
     
-  
+    
     
     @IBAction func phoneButtonPressed(_ sender: Any) {
         if let url = URL(string: "tel://\(attraction.phoneNo)"),
@@ -98,16 +109,60 @@ class AttractionDetailsViewController: UIViewController{
         }
     }
     
+    @IBAction func wishBtnClick(_ sender: Any) {
+        let username = defaults.string(forKey: "userName")!
+        print ("First time wishl \(defaults.string(forKey: "\(username)_wishids"))")
+        if self.wishBtn.currentImage === UIImage(named: "wishlist") {   //remove from wishlist
+            wishBtn.setImage(UIImage(named: "wishlist-empty"), for: .normal)
+            
+            var modify = defaults.array(forKey: "\(username)_wishids") as! [Int]
+            if(modify.contains(attraction.id)){
+                modify = modify.filter { $0 != attraction.id }
+            }
+            defaults.set(modify, forKey: "\(username)_wishids")    //setting removed data
+        }else{                                      //add to wishlist
+            wishBtn.setImage(UIImage(named: "wishlist"), for: .normal)
+            var previousData:[Int]?
+            //let email = defaults.string(forKey: "userName")
+            let getNewId:Int = attraction.id
+            if let getPreviousData = defaults.array(forKey: "\(username)_wishids") {    //already exist
+                previousData = getPreviousData as? [Int]
+                var insert : Bool = false
+                for checkSame in previousData!{
+                    if(checkSame == getNewId){
+                        let temp = defaults.array(forKey: "\(username)_wishids")
+                        insert = true
+                        break;
+                    }
+                }
+                if(insert == false){
+                    previousData?.append(getNewId)
+                    defaults.set(previousData, forKey: "\(username)_wishids")
+                    let temp = defaults.array(forKey: "\(username)_wishids")
+                    print(temp!)
+                }
+            }else{
+                print("Setting for first time")
+                let newData:[Int] = [getNewId]
+                defaults.set(newData, forKey: "\(username)_wishids")
+            }
+        }
+    }
     
     @objc func gotSettingPage(){
         defaults.setValue(false, forKey: "rememberMeState")
-        self.navigationController?.popToRootViewController(animated: true)
+        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "loginPage") as? LoginViewController
+        navigationController?.setNavigationBarHidden(true, animated: true)
+        tabBarController?.tabBar.isHidden = true
+        self.navigationController?.pushViewController(vc!, animated: true)
         
     }
     
     @objc func goBackToAttractionList()
     {
         defaults.setValue(false, forKey: "rememberMeState")
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popToRootViewController(animated: true)
     }
+    
+    
 }

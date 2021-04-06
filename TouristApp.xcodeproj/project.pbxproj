@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		6D86F9DB261889750077479C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D86F9DA261889750077479C /* LoginViewController.swift */; };
 		6D86F9DE26188DDF0077479C /* AttractionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D86F9DD26188DDF0077479C /* AttractionViewController.swift */; };
+		6DB08B5D261C47EC00C58F23 /* WishListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB08B5C261C47EC00C58F23 /* WishListViewController.swift */; };
+		6DB08B60261C48B300C58F23 /* WishTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB08B5F261C48B300C58F23 /* WishTableViewCell.swift */; };
 		D56161082619FA9500E6FD31 /* AttractionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56161072619FA9500E6FD31 /* AttractionList.swift */; };
 		D561610B261A263400E6FD31 /* AttractionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D561610A261A263400E6FD31 /* AttractionDetailsViewController.swift */; };
 		D561610F261A39C800E6FD31 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D561610E261A39C800E6FD31 /* WebViewController.swift */; };
@@ -24,6 +26,8 @@
 /* Begin PBXFileReference section */
 		6D86F9DA261889750077479C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6D86F9DD26188DDF0077479C /* AttractionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractionViewController.swift; sourceTree = "<group>"; };
+		6DB08B5C261C47EC00C58F23 /* WishListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListViewController.swift; sourceTree = "<group>"; };
+		6DB08B5F261C48B300C58F23 /* WishTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishTableViewCell.swift; sourceTree = "<group>"; };
 		D56161072619FA9500E6FD31 /* AttractionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractionList.swift; sourceTree = "<group>"; };
 		D561610A261A263400E6FD31 /* AttractionDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttractionDetailsViewController.swift; sourceTree = "<group>"; };
 		D561610E261A39C800E6FD31 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +85,8 @@
 				D56161072619FA9500E6FD31 /* AttractionList.swift */,
 				D561610A261A263400E6FD31 /* AttractionDetailsViewController.swift */,
 				D561610E261A39C800E6FD31 /* WebViewController.swift */,
+				6DB08B5C261C47EC00C58F23 /* WishListViewController.swift */,
+				6DB08B5F261C48B300C58F23 /* WishTableViewCell.swift */,
 			);
 			path = TouristApp;
 			sourceTree = "<group>";
@@ -156,6 +162,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DB08B60261C48B300C58F23 /* WishTableViewCell.swift in Sources */,
 				D56161082619FA9500E6FD31 /* AttractionList.swift in Sources */,
 				D571ADAD26173C9F0040503C /* AttractionTableViewCell.swift in Sources */,
 				D571AD94261737AD0040503C /* AppDelegate.swift in Sources */,
@@ -163,6 +170,7 @@
 				D561610B261A263400E6FD31 /* AttractionDetailsViewController.swift in Sources */,
 				D571AD96261737AD0040503C /* SceneDelegate.swift in Sources */,
 				6D86F9DE26188DDF0077479C /* AttractionViewController.swift in Sources */,
+				6DB08B5D261C47EC00C58F23 /* WishListViewController.swift in Sources */,
 				D561610F261A39C800E6FD31 /* WebViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

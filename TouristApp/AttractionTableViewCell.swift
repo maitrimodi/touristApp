@@ -16,9 +16,7 @@ class AttractionTableViewCell: UITableViewCell {
     @IBOutlet weak var imageOutlet: UIImageView!
     @IBOutlet weak var attractionNameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
-    
-    
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

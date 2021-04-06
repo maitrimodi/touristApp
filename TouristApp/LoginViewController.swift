@@ -49,7 +49,7 @@ class LoginViewController: UIViewController {
                     defaults.setValue(false, forKey: "rememberMeState")
                 }
                 defaults.set(userNameLabel.text, forKey: "userName")
-                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "places") as? AttractionViewController
+                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "tabBar") as? UITabBarController
                 self.navigationController?.pushViewController(vc!, animated: true)
             }
             else
@@ -79,7 +79,7 @@ class LoginViewController: UIViewController {
         
         if defaults.bool(forKey: "rememberMeState")
         {
-            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "places") as? AttractionViewController
+            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "tabBar") as? UITabBarController
             self.navigationController?.pushViewController(vc!, animated: true)
         }
     }

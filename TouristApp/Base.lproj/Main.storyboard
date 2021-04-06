@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Attraction View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="places" id="BYZ-38-t0r" customClass="AttractionViewController" customModule="TouristApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -28,10 +28,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="345" height="169"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vQX-B9-EXV">
-                                                    <rect key="frame" x="12" y="11" width="147" height="129"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="attractionNameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FWJ-QD-xCK">
                                                     <rect key="frame" x="173" y="11" width="169" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -46,6 +42,10 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vQX-B9-EXV">
+                                                    <rect key="frame" x="18" y="11" width="147" height="129"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -60,14 +60,15 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="eTt-kc-dIR"/>
+                    <tabBarItem key="tabBarItem" image="list.bullet" catalog="system" id="eTt-kc-dIR"/>
+                    <navigationItem key="navigationItem" id="WVq-Fe-yJf"/>
                     <connections>
                         <outlet property="attractionListTableView" destination="sjH-cJ-hdy" id="jek-nE-egA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6007.2463768115949" y="-597.32142857142856"/>
+            <point key="canvasLocation" x="7721.739130434783" y="95.758928571428569"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="3Ig-84-UzG">
@@ -149,10 +150,9 @@
         <!--Navigation Controller-->
         <scene sceneID="6YY-Tw-2Qg">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="V2b-XW-RrI" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="navBar" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="V2b-XW-RrI" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5Md-VM-3GX">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.052999399599999997" green="0.2227907777" blue="0.50978296999999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -263,6 +263,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w7z-4W-Rzb">
+                                <rect key="frame" x="347" y="113" width="42" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="&quot;&quot;" image="wishlist-empty"/>
+                                <connections>
+                                    <action selector="wishBtnClick:" destination="6rg-CO-Ncd" eventType="touchUpInside" id="39T-ki-Rqh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="JxQ-cE-rAd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -280,11 +288,30 @@
                         <outlet property="rateSlider" destination="ddj-KS-7Pa" id="s38-qD-SKP"/>
                         <outlet property="sliderValueLabel" destination="RVS-mT-rha" id="kNR-2v-G3q"/>
                         <outlet property="websiteLabel" destination="JMx-Bh-UMh" id="qJd-WW-peP"/>
+                        <outlet property="wishBtn" destination="w7z-4W-Rzb" id="Rpu-7F-O9z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f50-dD-zjj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7671.0144927536239" y="-597.32142857142856"/>
+        </scene>
+        <!--TabVC View Controller-->
+        <scene sceneID="jcs-ta-xhK">
+            <objects>
+                <tabBarController storyboardIdentifier="tabBar" id="gxY-Rr-rDq" customClass="TabVCViewController" customModule="TouristApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jBZ-Z5-Pa1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="pcX-qL-RCd" kind="relationship" relationship="viewControllers" id="7Cc-Vd-YpX"/>
+                        <segue destination="EZl-NS-8VX" kind="relationship" relationship="viewControllers" id="y3r-qd-dAG"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dnc-RO-i1C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5974" y="295"/>
         </scene>
         <!--Web View Controller-->
         <scene sceneID="wRr-S4-o59">
@@ -318,6 +345,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Gyc-Vk-I0Y">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WeF-Qy-x6h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eSE-In-isp" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3dD-6t-C0p">
@@ -329,13 +357,114 @@
                         <segue destination="6rg-CO-Ncd" kind="relationship" relationship="rootViewController" id="SPI-Ko-PhG"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WeF-Qy-x6h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6813.04347826087" y="-597.32142857142856"/>
+            <point key="canvasLocation" x="6762" y="-597"/>
+        </scene>
+        <!--Wishlist View Controller-->
+        <scene sceneID="qZ3-ma-YEo">
+            <objects>
+                <viewController id="7ZM-l9-lUf" customClass="WishlistViewController" customModule="TouristApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bkV-i8-Hdb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1Yy-eP-dhX">
+                                <rect key="frame" x="0.0" y="94" width="414" height="719"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="wishTableCell" rowHeight="131" id="Ckf-Yd-Foh" customClass="WishTableViewCell" customModule="TouristApp">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="131"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ckf-Yd-Foh" id="paG-An-2Xd">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="131"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fPB-kk-5A6">
+                                                    <rect key="frame" x="20" y="14" width="352" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13s-7t-F8z">
+                                                    <rect key="frame" x="20" y="77" width="352" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="13"/>
+                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59N-ot-WDb">
+                                                    <rect key="frame" x="20" y="46" width="352" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="13"/>
+                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="wishAddress" destination="13s-7t-F8z" id="ZCw-lL-NNj"/>
+                                            <outlet property="wishName" destination="fPB-kk-5A6" id="SvK-VZ-TI6"/>
+                                            <outlet property="wishPhone" destination="59N-ot-WDb" id="Qva-II-f4m"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="lU1-9m-v0I"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="PXv-T1-0Zj">
+                        <barButtonItem key="backBarButtonItem" title="&quot;&quot;" id="wyB-q3-uX4"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="wishTable" destination="1Yy-eP-dhX" id="WG2-Ie-4KH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OLM-T5-syf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7755" y="787"/>
+        </scene>
+        <!--List-->
+        <scene sceneID="7H9-eM-Ifm">
+            <objects>
+                <navigationController id="pcX-qL-RCd" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="List" id="ojr-M4-ArG"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1lI-wG-MHG">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="8Fj-vc-NLt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wQS-4w-i0M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6859" y="96"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="vfB-mR-hxb">
+            <objects>
+                <navigationController id="EZl-NS-8VX" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="Sn4-bl-yOd" userLabel="WishList"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vqL-9c-dwz">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="7ZM-l9-lUf" kind="relationship" relationship="rootViewController" id="Fff-ja-DgV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ph7-cT-bdL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6858" y="787"/>
         </scene>
     </scenes>
     <resources>
+        <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="mumbaiicon" width="512" height="512"/>
+        <image name="wishlist-empty" width="25" height="25"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

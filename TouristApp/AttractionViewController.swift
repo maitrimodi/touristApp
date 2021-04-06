@@ -9,6 +9,11 @@ import UIKit
 
 class AttractionViewController: UIViewController,  UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var attractionListTableView: UITableView!
+    var records: [AttractionList] = []
+    let defaults = UserDefaults.standard
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return records.count
     }
@@ -42,15 +47,6 @@ class AttractionViewController: UIViewController,  UITableViewDelegate, UITableV
         pass.attraction = attraction
         show(pass, sender: self)    }
     
-    //-----------------
-    //MARK: Outlets
-    //-----------------
-    
-    @IBOutlet weak var attractionListTableView: UITableView!
-    var records: [AttractionList] = []
-    
-    let defaults = UserDefaults.standard
-    
     //------------------------
     //MARK: Default Functions
     //------------------------
@@ -59,11 +55,9 @@ class AttractionViewController: UIViewController,  UITableViewDelegate, UITableV
         self.title = "ATTRACTIONS"
         
         let logButton : UIBarButtonItem = UIBarButtonItem(title: "Logout", style: UIBarButtonItem.Style.plain, target: self, action: #selector(gotSettingPage))
-        
-        let backButton : UIBarButtonItem = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(goBackToLoginPage))
-        
         self.navigationItem.rightBarButtonItem = logButton
         
+        let backButton : UIBarButtonItem = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(goBackToLoginPage))
         self.navigationItem.leftBarButtonItem = backButton
         
         
@@ -100,14 +94,20 @@ class AttractionViewController: UIViewController,  UITableViewDelegate, UITableV
     
     @objc func gotSettingPage(){
         defaults.setValue(false, forKey: "rememberMeState")
-        self.navigationController?.popViewController(animated: true)
+        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "loginPage") as? LoginViewController
+        navigationController?.setNavigationBarHidden(true, animated: true)
+        tabBarController?.tabBar.isHidden = true
+        self.navigationController?.pushViewController(vc!, animated: true)
         
     }
     
     @objc func goBackToLoginPage()
     {
         defaults.setValue(false, forKey: "rememberMeState")
-        self.navigationController?.popViewController(animated: true)
+        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "loginPage") as? LoginViewController
+        navigationController?.setNavigationBarHidden(true, animated: true)
+        tabBarController?.tabBar.isHidden = true
+        self.navigationController?.pushViewController(vc!, animated: true)
     }
     
     
