@@ -19,6 +19,7 @@ class WishlistViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewWillAppear(_ animated: Bool) {
         wishTable.reloadData()
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let username = defaults.string(forKey: "userName")!
         let getData = defaults.array(forKey: "\(username)_wishids") as? [Int]
@@ -29,6 +30,7 @@ class WishlistViewController: UIViewController, UITableViewDelegate, UITableView
         }
         
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         var cell = tableView.dequeueReusableCell(withIdentifier: "wishTableCell") as! WishTableViewCell
@@ -36,6 +38,7 @@ class WishlistViewController: UIViewController, UITableViewDelegate, UITableView
             cell = WishTableViewCell()
         }
         var records: [AttractionList] = []
+        //Fetch wishlisted items and display in table cell respectively
         let username = defaults.string(forKey: "userName")!
         let getData = defaults.array(forKey: "\(username)_wishids") as? [Int]
         if(getData != nil)
