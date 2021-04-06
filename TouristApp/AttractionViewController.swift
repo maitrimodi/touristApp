@@ -52,7 +52,8 @@ class AttractionViewController: UIViewController,  UITableViewDelegate, UITableV
     //------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "ATTRACTIONS"
+        self.navigationItem.title = "Attractions"
+        //self.title = "Places To See"
         
         let logButton : UIBarButtonItem = UIBarButtonItem(title: "Logout", style: UIBarButtonItem.Style.plain, target: self, action: #selector(gotSettingPage))
         self.navigationItem.rightBarButtonItem = logButton
