@@ -53,14 +53,14 @@ class AttractionViewController: UIViewController,  UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Attractions"
-        //self.title = "Places To See"
         
+        // On navBar display logout button
         let logButton : UIBarButtonItem = UIBarButtonItem(title: "Logout", style: UIBarButtonItem.Style.plain, target: self, action: #selector(gotSettingPage))
         self.navigationItem.rightBarButtonItem = logButton
         
+        // On navBar display back button
         let backButton : UIBarButtonItem = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(goBackToLoginPage))
         self.navigationItem.leftBarButtonItem = backButton
-        
         
         //attach the data source and delegate to the outlet
         attractionListTableView.dataSource = self
@@ -68,6 +68,7 @@ class AttractionViewController: UIViewController,  UITableViewDelegate, UITableV
         
         self.attractionListTableView.rowHeight = 150
         
+        //read json file and display list of attractions
         if let filepath = Bundle.main.path(forResource:"touristAttraction", ofType:"json") {
             do {
                 // 2. Get the file contents as a string
@@ -92,7 +93,7 @@ class AttractionViewController: UIViewController,  UITableViewDelegate, UITableV
         } // end if
     }
     
-    
+    //On click of logout button deselect rememberMe option
     @objc func gotSettingPage(){
         defaults.setValue(false, forKey: "rememberMeState")
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "loginPage") as? LoginViewController
@@ -102,6 +103,7 @@ class AttractionViewController: UIViewController,  UITableViewDelegate, UITableV
         
     }
     
+    //On click of back button deselect rememberMe option
     @objc func goBackToLoginPage()
     {
         defaults.setValue(false, forKey: "rememberMeState")

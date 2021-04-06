@@ -18,7 +18,7 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var rememberMe: UISwitch!
     
-    var userDetails = ["thanos@gmail.com": "5555", "wonderwoman@yahoo.com": "abcd","1":"1"]
+    var userDetails = ["thanos@gmail.com": "5555", "wonderwoman@yahoo.com": "abcd"]
     
     
     override func viewDidLoad() {
@@ -26,7 +26,7 @@ class LoginViewController: UIViewController {
         self.title = "TOURISM APP"
     }
     
-    
+    //Validate username & pswd when Login button clicked
     @IBAction func btnClick(_ sender: UIButton) {
         let username = userNameLabel.text!
         let password = passwordLabel.text!
@@ -71,6 +71,7 @@ class LoginViewController: UIViewController {
         
     }
     
+    //If rememberMe is selected go to AttractionList screen or if logout clicked erase user details
     override func viewWillAppear(_ animated: Bool) {
         
         userNameLabel.text = ""

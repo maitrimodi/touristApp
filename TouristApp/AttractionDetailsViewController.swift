@@ -30,12 +30,15 @@ class AttractionDetailsViewController: UIViewController{
         super.viewDidLoad()
         title = attraction.name
         
+        // On navBar display logout button
         let logButton : UIBarButtonItem = UIBarButtonItem(title: "Logout", style: UIBarButtonItem.Style.plain, target: self, action: #selector(gotSettingPage))
         self.navigationItem.rightBarButtonItem = logButton
         
+        // On navBar display back button
         let backButton : UIBarButtonItem = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(goBackToAttractionList))
         self.navigationItem.leftBarButtonItem = backButton
         
+        //Display values appropriately for attraction selected
         nameLabel.text = attraction.name
         addressLabel.text = attraction.address
         image2Outlet.image = UIImage(named: attraction.photos[1])
@@ -46,7 +49,8 @@ class AttractionDetailsViewController: UIViewController{
         pricingLabel.text = "$ \(attraction.pricing)"
         descriptionLabel.text = attraction.description
         let username = defaults.string(forKey: "userName")!
-        let previousData = defaults.dictionary(forKey: "\(username)_rating")
+    
+        //Check for wishlisted item previously and display accordingly
         let getWishListData = defaults.array(forKey: "\(username)_wishids") as? [Int]
         if(getWishListData == nil){
             wishBtn.setImage(UIImage(named: "wishlist-empty"), for: .normal)
@@ -60,6 +64,8 @@ class AttractionDetailsViewController: UIViewController{
             }
         }
         
+        //Check for ratings provided previously and display accordingly
+        let previousData = defaults.dictionary(forKey: "\(username)_rating")
         if(previousData != nil){
             if let entry = previousData!.keys.first(where: { $0.lowercased().contains("\(attraction.id)") }) {
                 rateSlider?.setValue((previousData!["\(entry)"]! as! Float), animated: true)
@@ -68,7 +74,7 @@ class AttractionDetailsViewController: UIViewController{
         }
     }
     
-    
+    // When ever rating slider value is changed set and display the rating respectively
     @IBAction func sliderValueChanged(_ sender: UISlider) {
         sliderValueLabel.text = "\(Int(sender.value))"
         let username = defaults.string(forKey: "userName")!
@@ -83,13 +89,14 @@ class AttractionDetailsViewController: UIViewController{
                 defaults.set(previousData!, forKey: "\(username)_rating")
             }
         }else{
-            //entering new or appending first time
+            //entering new or rated first time
             previousData = ["\(attraction.id)": Int(sender.value)]
             defaults.set(previousData!, forKey: "\(username)_rating")
         }
         
     }
     
+    //Website clicked and navigated to the browser
     @IBAction func websiteButtonPressed(_ sender: Any) {
         guard let pass = storyboard?.instantiateViewController(identifier: "webViewController") as? WebViewController else {
             print("Cannot find the pass view controller")
@@ -100,7 +107,7 @@ class AttractionDetailsViewController: UIViewController{
     }
     
     
-    
+    //Navigate to dialer
     @IBAction func phoneButtonPressed(_ sender: Any) {
         if let url = URL(string: "tel://\(attraction.phoneNo)"),
            UIApplication.shared.canOpenURL(url) {
@@ -109,23 +116,26 @@ class AttractionDetailsViewController: UIViewController{
         }
     }
     
+    //When ever place needs to be select/deselect as wishlist click on heart icon
     @IBAction func wishBtnClick(_ sender: Any) {
         let username = defaults.string(forKey: "userName")!
-        print ("First time wishl \(defaults.string(forKey: "\(username)_wishids"))")
-        if self.wishBtn.currentImage === UIImage(named: "wishlist") {   //remove from wishlist
+        if self.wishBtn.currentImage === UIImage(named: "wishlist") {
+            //remove from wishlist
             wishBtn.setImage(UIImage(named: "wishlist-empty"), for: .normal)
             
             var modify = defaults.array(forKey: "\(username)_wishids") as! [Int]
             if(modify.contains(attraction.id)){
                 modify = modify.filter { $0 != attraction.id }
             }
-            defaults.set(modify, forKey: "\(username)_wishids")    //setting removed data
-        }else{                                      //add to wishlist
+            //setting removed data
+            defaults.set(modify, forKey: "\(username)_wishids")
+        }else{
+            //add to wishlist
             wishBtn.setImage(UIImage(named: "wishlist"), for: .normal)
             var previousData:[Int]?
-            //let email = defaults.string(forKey: "userName")
             let getNewId:Int = attraction.id
-            if let getPreviousData = defaults.array(forKey: "\(username)_wishids") {    //already exist
+            if let getPreviousData = defaults.array(forKey: "\(username)_wishids") {
+                //already exist
                 previousData = getPreviousData as? [Int]
                 var insert : Bool = false
                 for checkSame in previousData!{
@@ -149,6 +159,7 @@ class AttractionDetailsViewController: UIViewController{
         }
     }
     
+    //On click of logout button deselect rememberMe option
     @objc func gotSettingPage(){
         defaults.setValue(false, forKey: "rememberMeState")
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "loginPage") as? LoginViewController
@@ -158,6 +169,7 @@ class AttractionDetailsViewController: UIViewController{
         
     }
     
+    //On click of back button deselect rememberMe option
     @objc func goBackToAttractionList()
     {
         defaults.setValue(false, forKey: "rememberMeState")
